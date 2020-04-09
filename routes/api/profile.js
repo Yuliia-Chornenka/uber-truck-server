@@ -9,6 +9,7 @@ const router = express.Router();
 const validate = require('../middleware/valid');
 const profileValid = require('../../validation-schema/profile');
 
+
 router.get('/profile', auth, async (req, res) => {
   try {
     res.json(req.user);
@@ -19,6 +20,7 @@ router.get('/profile', auth, async (req, res) => {
     });
   }
 });
+
 
 router.delete('/profile', auth, async (req, res) => {
   try {
@@ -36,6 +38,7 @@ router.delete('/profile', auth, async (req, res) => {
     });
   }
 });
+
 
 /*   Change password   */
 router.patch('/password',
@@ -64,6 +67,7 @@ router.patch('/password',
         });
       }
     });
+
 
 /*  Change avatar  */
 router.patch('/profile', auth, async (req, res) => {

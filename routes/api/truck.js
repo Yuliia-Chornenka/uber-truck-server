@@ -118,19 +118,6 @@ router.delete('/trucks/:type', auth, async (req, res) => {
 
 router.get('/trucks', auth, async (req, res) => {
   try {
-    const trucks = await Truck.find({createdBy: req.user.userId});
-    res.json(trucks);
-  } catch (e) {
-    res.status(500).json({
-      message: 'Something went wrong. Try again later.',
-      error: e,
-    });
-  }
-});
-
-
-router.get('/trucks', auth, async (req, res) => {
-  try {
     const id = req.user.userId;
     const user = await User.findById(id);
     if (!user || user.role !== 'driver') {

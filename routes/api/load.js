@@ -33,7 +33,8 @@ router.patch('/loads/:id/post',
               'status': 'IS', 'assignedTo': {$ne: null}},
             (error) => {
               if (error) {
-                  return res.status(500).json({message: 'Failed to find a truck'});
+                // eslint-disable-next-line max-len
+                return res.status(500).json({message: 'Failed to find a truck'});
               }
             });
 
@@ -241,7 +242,6 @@ router.patch('/loads/:id/state', auth, async (req, res) => {
   }
 });
 
-
 /*  Pagination  */
 router.get('/loads/:page/:limit', auth, async (req, res) => {
   try {
@@ -267,6 +267,7 @@ router.get('/loads/:page/:limit', auth, async (req, res) => {
     });
   }
 });
+
 
 /*  Filter  */
 router.get('/loads/:page/:limit/:status', auth, async (req, res) => {
@@ -295,6 +296,7 @@ router.get('/loads/:page/:limit/:status', auth, async (req, res) => {
   }
 });
 
+
 /*  Delete a load by shipper  */
 router.delete('/loads/:id', auth, async (req, res) => {
   try {
@@ -312,6 +314,7 @@ router.delete('/loads/:id', auth, async (req, res) => {
     });
   }
 });
+
 
 /*  Update a load by shipper  */
 router.patch('/loads/:id', auth, async (req, res) => {

@@ -1,7 +1,5 @@
 const express = require('express');
-const Truck = require('../../models/Truck');
 const Load = require('../../models/Load');
-const User = require('../../models/User');
 const router = express.Router();
 const auth = require('../middleware/auth');
 
@@ -31,6 +29,7 @@ router.get('/orders/:page/:limit', auth, async (req, res) => {
     });
   }
 });
+
 
 /*  Filter  */
 router.get('/orders/:page/:limit/:status', auth, async (req, res) => {
