@@ -1,0 +1,546 @@
+define({ "api": [
+  {
+    "type": "delete",
+    "url": "/api/trucks/:type",
+    "title": "deleting truck by type (only driver has access)",
+    "name": "DeleteTruck",
+    "group": "Truck",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Successfully delete a truck.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "TruckNotFound",
+            "description": "<p>Failed to delete.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "Truck"
+  },
+  {
+    "type": "delete",
+    "url": "/api/loads/:id",
+    "title": "deleting load by id (only shipper has access)",
+    "name": "DeleteLoad",
+    "group": "loads",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Successfully delete a load.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "LoadNotFound",
+            "description": "<p>Failed to delete.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "loads"
+  },
+  {
+    "type": "get",
+    "url": "/api/loads/:page/:limit/:status",
+    "title": "filter shipper's loads by status",
+    "name": "GetLoad",
+    "group": "loads",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "filtered",
+            "description": "<p>loads</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "loads"
+  },
+  {
+    "type": "get",
+    "url": "/api/loads/:page/:limit",
+    "title": "get all shipper's loads with pagination",
+    "name": "GetLoad",
+    "group": "loads",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "loads",
+            "description": "<p>with pagination</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "loads"
+  },
+  {
+    "type": "patch",
+    "url": "/api/loads/:id",
+    "title": "updating a load by id (only shipper has access)",
+    "name": "UpdateLoad",
+    "group": "loads",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "payload",
+            "description": "<p>load's payload.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "dimensions.width",
+            "description": "<p>load's width.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "dimensions.height",
+            "description": "<p>load's height.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "dimensions.length",
+            "description": "<p>load's length.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "Updating",
+            "description": "<p>load.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "LoadNotFound",
+            "description": "<p>Failed to update.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "loads"
+  },
+  {
+    "type": "get",
+    "url": "/api/orders/:page/:limit",
+    "title": "get all driver's orders with pagination",
+    "name": "GetOrder",
+    "group": "orders",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "orders",
+            "description": "<p>with pagination</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "orders"
+  },
+  {
+    "type": "get",
+    "url": "/api/orders/:page/:limit/:status",
+    "title": "filter driver's orders by status",
+    "name": "GetOrder",
+    "group": "orders",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "filtered",
+            "description": "<p>orders</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "orders"
+  },
+  {
+    "type": "get",
+    "url": "/api/orders/:id",
+    "title": "get order by id (only driver has access)",
+    "name": "GetOrder",
+    "group": "orders",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "Found",
+            "description": "<p>order.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "orders"
+  },
+  {
+    "type": "patch",
+    "url": "/api/password",
+    "title": "change user password",
+    "name": "ChangePassword",
+    "group": "password",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Password has has been updated.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ProfileNotFound",
+            "description": "<p>Failed to update.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "OldPasswordIncorrect",
+            "description": "<p>Password incorrect.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "password"
+  },
+  {
+    "type": "delete",
+    "url": "/api/profile",
+    "title": "deleting user profile",
+    "name": "DeleteProfile",
+    "group": "profile",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Successfully delete a user.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ProfileNotFound",
+            "description": "<p>Failed to delete.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "profile"
+  },
+  {
+    "type": "get",
+    "url": "/api/profile",
+    "title": "get information about user",
+    "name": "GetProfile",
+    "group": "profile",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "Information",
+            "description": "<p>about user.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "profile"
+  },
+  {
+    "type": "patch",
+    "url": "/api/profile",
+    "title": "change user avatar",
+    "name": "UpdateProfile",
+    "group": "profile",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User's jwt token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>of saved photo.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ProfileNotFound",
+            "description": "<p>Failed to update.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/apidoc.js",
+    "groupTitle": "profile"
+  }
+] });
